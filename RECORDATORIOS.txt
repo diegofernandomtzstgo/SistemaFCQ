@@ -1,0 +1,3 @@
+RECORDATORIOS
+
+habilitar el hash de contraseñas en secretarias y profesores. Pero hasta que la interfaz del admin quede correcta
