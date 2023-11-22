@@ -1,8 +1,8 @@
+
+
 <?php
 
 session_start();
-
-
 if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
  header("Location: LoginSecretarias.php");
     exit();
@@ -31,8 +31,33 @@ $_SESSION['last_activity'] = time();
     <title>Página Principal de Secretarias</title>
 </head>
 <body>
-    <h2>Bienvenido, <?php echo $_SESSION['user_name']; ?>!</h2>
-    <p>Contenido de la página principal de secretarias...</p>
-    <a href="Logout.php">Cerrar sesión</a>
+    <nav>
+        <h1><img src="iconos/FCQ_logo.png" width="80">Menu de Operaciones</h1>
+        <ul>
+            <li><a href="#"><img src="iconos//homelogo.png" width="20px"><br>Home</a></li>
+            <li><a href="Logout.php"><img src="iconos//cerrarsesion.png" width="20px"><br>Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <?php echo "<font color='black' face='Courier New' size=5>Hola $_SESSION[user_name] $_SESSION[user_apell]    </font>" ?>
+    <div class="contenedor">
+    <div class="parte">Ingresar alumno<br><br>
+            <div class="parte2"><a href="AgregarAlumnos.php"><img src="iconos/ingresaralumno.png" width="110"></a></div>
+        </div>
+        <div class="parte">Editar alumno<br><br>
+            <div class="parte2"><a href="#"><img src="iconos/editar_alumno.png" width="100"></a></div>
+        </div>
+        <div class="parte">Calificaciones de Alumnos<br><br>
+            <div class="parte2"><a href="#"><img src="iconos/calificacionesalumno.png" width="135"></a></div>
+        </div>
+        <div class="parte">Laboratorios<br><br>
+        <div class="parte2"><a href="#"><img src="iconos/laboratorios.png" width="100"></a></div>
+        </div>
+        <div class="parte">Profesores<br><br>
+        <div class="parte2"><a href="#"><img src="iconos/profesor.png" width="100"></a></div>
+        </div>
+        </div>
+    </div>
+
 </body>
 </html>
