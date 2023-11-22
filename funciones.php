@@ -20,12 +20,13 @@ function conectarDB() {
         return null;
     }
 }
-function consultarLogin($numEmp, $password) {
+
+function consultarLoginSecretarias($numEmp, $password) {
     $conexion = conectarDB();
 
     try {
         // Consulta preparada para evitar la inyección SQL
-        $consulta = $conexion->prepare("SELECT NumEmp,Password FROM secretarias WHERE NumEmp = :numEmp");
+        $consulta = $conexion->prepare("SELECT * FROM secretarias WHERE NumEmp = :numEmp");
         $consulta->bindParam(':numEmp', $numEmp, PDO::PARAM_STR);
         $consulta->execute();
 
@@ -48,3 +49,30 @@ function consultarLogin($numEmp, $password) {
 }
 
 
+
+function consultarLoginProfesores($numEmp, $password) {
+    $conexion = conectarDB();
+
+    try {
+        // Consulta preparada para evitar la inyección SQL
+        $consulta = $conexion->prepare("SELECT * FROM profesores WHERE Num_Emp = :numEmp");
+        $consulta->bindParam(':numEmp', $numEmp, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
+
+       
+        if ($usuario && $password === $usuario['Password']) {
+            return $usuario;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+       
+        error_log("Error de base de datos: " . $e->getMessage(), 0);
+        return false;
+    } finally {
+        
+        $conexion = null;
+    }
+}

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mensaje_error = "Por favor, completa todos los campos.";
     } else {
         // Consultar el login
-        $usuario_valido = consultarLogin($numEmp, $password);
+        $usuario_valido = consultarLoginSecretarias($numEmp, $password);
 
         if ($usuario_valido) {
             session_start();
