@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           
             $_SESSION['user_id'] = $usuario_valido['NumEmp'];
             $_SESSION['user_name'] = $usuario_valido['Nombre'];
+            $_SESSION['user_apell'] = $usuario_valido['Apellido'];
 
             header("Location: IndexSecretarias.php");
             exit();
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login de Secretarias</title>
 </head>
 <body>
+    
     <h2>Login de Secretarias</h2>
     
     <?php if (isset($mensaje_error)): ?>

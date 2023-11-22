@@ -20,13 +20,20 @@ function conectarDB() {
         return null;
     }
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 function consultarLoginSecretarias($numEmp, $password) {
     $conexion = conectarDB();
 
     try {
         // Consulta preparada para evitar la inyección SQL
+<<<<<<< Updated upstream
         $consulta = $conexion->prepare("SELECT * FROM secretarias WHERE NumEmp = :numEmp");
+=======
+        $consulta = $conexion->prepare("SELECT *FROM secretarias WHERE NumEmp = :numEmp");
+>>>>>>> Stashed changes
         $consulta->bindParam(':numEmp', $numEmp, PDO::PARAM_STR);
         $consulta->execute();
 
