@@ -35,7 +35,7 @@ $_SESSION['last_activity'] = time();
         <h1><img src="iconos/FCQ_logo.png" width="80">Menu de Operaciones</h1>
         <ul>
             <li><a href="#"><img src="iconos//homelogo.png" width="20px"><br>Home</a></li>
-            <li><a href="Logout.php"><img src="iconos//cerrarsesion.png" width="20px"><br>Cerrar sesión</a></li>
+            <li><a href="LogoutSecretarias.php"><img src="iconos//cerrarsesion.png" width="20px"><br>Cerrar sesión</a></li>
         </ul>
     </nav>
 
