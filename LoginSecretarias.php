@@ -41,24 +41,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_login.css">
     <title>Login de Secretarias</title>
 </head>
 <body>
+
+     <!--||||||||||||||||||||BANNER|||||||||||||||||||-->
+     <div class="conatiner">
+       <div class="banner">
+            <div class="banner-text">
+                <div class="mensajePrincipal"><h2>Sistema De Control Escolar FCQ</h2></div>
+                
+                
+                    <div class="imagen">
+                        <img src="imagenes/FCQ_logo.png" alt="img">
+                    </div>
+        </div>
+        </div>
+    </div>
+
+
+        <div class="separador">
+            <br>
+            
+            
+        </div>
+
     
-    <h2>Login de Secretarias</h2>
+    
     
     <?php if (isset($mensaje_error)): ?>
         <p style="color: red;"><?php echo $mensaje_error; ?></p>
     <?php endif; ?>
 
-    <form action="LoginSecretarias.php" method="post">
-        <label for="NumEmp">Número de empleado:</label>
-        <input type="text" id="NumEmp" name="NumEmp" required>
-        <br>
-        <label for="Password">Contraseña:</label>
-        <input type="password" id="Password" name="Password" required>
-        <br>
-        <input type="submit" value="Iniciar sesión">
-    </form>
+<div class="containers">
+    <div class="login-containers"><!---->
+        <div class="register">
+            <form action="LoginSecretarias.php" method="post">
+               
+                <input type="text" id="NumEmp" placeholder="Nombre de usuario" name="nombre" class="nombre" required>
+                <br>
+                
+                <input type="password" id="Password" placeholder="Contraseña" name="contraseña" class="pass" required>
+                <br>
+                <input type="submit" class="submit" name="register" value="INICIAR">
+            </form>
+            </div>
+    
+    <footer class="footer">
+    
+  </footer>
+
 </body>
 </html>
