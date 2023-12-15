@@ -74,9 +74,10 @@ $_SESSION['last_activity'] = time();
         </div>
         </div>
     </div>
-
+=======
     
     <p>Contenido del panel de administrador...</p>
+>>>>>>> 2066549b4b2bffd5b0d48a34affe8ee3a44a5e07
 
     <a href="LogoutAdmin.php">Cerrar sesión</a>
 </body>
