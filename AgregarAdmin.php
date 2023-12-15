@@ -73,10 +73,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="apellido" required><br>
 
         <label for="cargo">Cargo:</label>
+
         <select name="cargo" required>
             <option value="Director">Director</option>
             <option value="Coordinador">Coordinador</option>
         </select><br>
+        <input type="text" name="cargo" required><br>
+
 
         <label for="usuario">Usuario:</label>
         <input type="text" name="usuario" required><br>

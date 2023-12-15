@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
@@ -6,6 +7,16 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
 }
 
 $inactive_time = 1800;
+
+
+session_start();
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+ header("Location: LoginProfesores.php");
+    exit();
+}
+
+$inactive_time = 1800; 
+
 
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $inactive_time)) {
     // Si ha pasado demasiado tiempo, cerrar sesión
@@ -17,6 +28,7 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
 
 // Actualizar la marca de tiempo de la última actividad
 $_SESSION['last_activity'] = time();
+
 
 // Obtener el número de empleado del profesor que ha iniciado sesión
 $numEmpProfesor = $_SESSION['user_id'];
@@ -31,11 +43,13 @@ $_SESSION['nombre'] = obtenerNombreProfesor($numEmpProfesor);
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Index de Profesores</title>
 </head>
 <body>
@@ -56,5 +70,17 @@ $_SESSION['nombre'] = obtenerNombreProfesor($numEmpProfesor);
     <!-- Resto de tu contenido del index -->
 
     <a href="LogoutProfesores.php">Cerrar sesión</a>
+
+    <title>Inicio - Profesores</title>
+</head>
+<body>
+    <h2>Bienvenido, <?php echo $_SESSION['user_name']; ?>!</h2>
+    
+
+    <p>Contenido exclusivo para profesores.</p>
+
+    <form action="Logoutprofesores.php" method="post">
+        <input type="submit" value="Cerrar sesión">
+    </form>
 </body>
 </html>

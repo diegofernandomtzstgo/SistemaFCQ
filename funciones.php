@@ -313,7 +313,6 @@ function consultarLoginAdmin($usuario, $password) {
     }
 }
 
-
 function agregarAdmin($nombre, $apellido, $cargo, $usuario, $password) {
     $conexion = conectarDB();
 
@@ -413,6 +412,7 @@ function eliminarProfesor($numEmp) {
         $conexion = null;
     }
 }
+
 
 
 function obtenerLaboratorioPorNumEmp($numEmp) {

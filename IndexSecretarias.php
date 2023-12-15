@@ -28,9 +28,22 @@ $_SESSION['last_activity'] = time();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_login.css">
     <title>Página Principal de Secretarias</title>
 </head>
 <body>
+    <!--||||||||||||||||||||BANNER|||||||||||||||||||-->
+    <div class="conatiner">
+        <div class="banner">
+            <div class="banner-text">
+                <h2> </h2>
+                <h1> </h1>
+                
+            </div>    
+        </div>
+    </div>
+
+
     <nav>
         <h1><img src="iconos/FCQ_logo.png" width="80">Menu de Operaciones</h1>
         <ul>

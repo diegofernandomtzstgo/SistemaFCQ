@@ -29,6 +29,10 @@ $_SESSION['last_activity'] = time();
 </head>
 <body>
     <h2>Bienvenido, <?php echo $_SESSION['admin_usuario']; ?>!</h2>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1425ea2728fe922fc016b92efccf27d23c635bde
    
     <div class="contenedor">
     <div class="parte">Ingresar Admin<br><br>
@@ -73,6 +77,13 @@ $_SESSION['last_activity'] = time();
         </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+=======
+    
+    <p>Contenido del panel de administrador...</p>
+>>>>>>> 2066549b4b2bffd5b0d48a34affe8ee3a44a5e07
+>>>>>>> 1425ea2728fe922fc016b92efccf27d23c635bde
 
     <a href="LogoutAdmin.php">Cerrar sesión</a>
 </body>
