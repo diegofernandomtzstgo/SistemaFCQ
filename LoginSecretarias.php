@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 
                     <div class="imagen">
-                        <img src="imagenes/FCQ_logo.png" alt="img">
+                        <img src="iconos/FCQ_logo.png" alt="img">
                     </div>
         </div>
         </div>
@@ -73,18 +73,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($mensaje_error)): ?>
         <p style="color: red;"><?php echo $mensaje_error; ?></p>
     <?php endif; ?>
-
-<div class="containers">
+ <!--|||||||||||||||FORMULARIO SECRETARIAS|||||||||||-->
+ <div class="containers">
     <div class="login-containers"><!---->
         <div class="register">
+            <h2>iniciar sesion</h2>
             <form action="LoginSecretarias.php" method="post">
-               
-                <input type="text" id="NumEmp" placeholder="Nombre de usuario" name="nombre" class="nombre" required>
+                <label for="NumEmp"></label>
+                <input type="text" id="NumEmp" placeholder="Nombre de usuario" name="NumEmp" class="nombre" required>
                 <br>
-                
-                <input type="password" id="Password" placeholder="Contraseña" name="contraseña" class="pass" required>
+                <label for="Password"></label>
+                <input type="password" id="Password" placeholder="Contraseña" name="Password" class="pass" required>
                 <br>
-                <input type="submit" class="submit" name="register" value="INICIAR">
+                <input type="submit" class="submit" name="register" value="Iniciar">
             </form>
             </div>
     
