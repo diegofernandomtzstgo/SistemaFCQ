@@ -415,43 +415,7 @@ function eliminarProfesor($numEmp) {
 
 
 
-function obtenerLaboratorioPorNumEmp($numEmp) {
-    $conexion = conectarDB();
 
-    try {
-        $consulta = $conexion->prepare("SELECT
-            p.NumEmp AS NumEmpProfesor,
-            p.Nombre AS NombreProfesor,
-            p.Apellidos AS ApellidosProfesor,
-            l.NomLaboratorio AS Laboratorio,
-            m.Clave AS ClaveMateria,
-            m.Nombre AS NombreMateria
-        FROM
-            profesores p
-        JOIN
-            prof_lab pl ON p.NumEmp = pl.Num_Emp
-        JOIN
-            laboratorios l ON pl.IdLaboratorio = l.IdLaboratorios
-        JOIN
-            materias m ON l.IdLaboratorios = m.IdLaboratorio
-        WHERE
-            p.NumEmp = :numEmp");
-
-        $consulta->bindParam(':numEmp', $numEmp, PDO::PARAM_INT);
-
-        $consulta->execute();
-
-        // Obtén los resultados de la consulta
-        $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
-
-        return $resultados;
-    } catch (PDOException $e) {
-        error_log("Error de base de datos: " . $e->getMessage(), 0);
-        return false;
-    } finally {
-        $conexion = null;
-    }
-}
 
 // En funciones.php
 function obtenerNombreProfesor($numEmp) {
@@ -477,3 +441,112 @@ function obtenerNombreProfesor($numEmp) {
     }
 }
 
+function obtenerMateriasPorNumEmp($numEmp) {
+    $conexion = conectarDB();
+
+    try {
+        $consulta = $conexion->prepare("SELECT
+            p.NumEmp AS NumEmpProfesor,
+            p.Nombre AS NombreProfesor,
+            l.NomLaboratorio AS Laboratorio,
+            m.Clave AS ClaveMateria,
+            m.Nombre AS NombreMateria
+        FROM
+            profesores p
+        JOIN
+            prof_lab pl ON p.NumEmp = pl.Num_Emp
+        JOIN
+            laboratorios l ON pl.IdLaboratorio = l.IdLaboratorios
+        JOIN
+            profesores_materias pm ON p.NumEmp = pm.NumEmp
+        JOIN
+            materias m ON pm.ClaveMateria = m.Clave
+        WHERE
+            p.NumEmp = :numEmp");
+        
+        $consulta->bindParam(':numEmp', $numEmp, PDO::PARAM_INT);
+        $consulta->execute();
+
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error de base de datos: " . $e->getMessage(), 0);
+        return false;
+    } finally {
+        $conexion = null;
+    }
+}
+
+function obtenerMateriasYLaboratoriosPorNumEmp($numEmp) {
+    $conexion = conectarDB();
+
+    try {
+        $consulta = $conexion->prepare("SELECT
+            p.NumEmp AS NumEmpProfesor,
+            p.Nombre AS NombreProfesor,
+            l.NomLaboratorio AS Laboratorio,
+            m.Clave AS ClaveMateria,
+            m.Nombre AS NombreMateria
+        FROM
+            profesores p
+        JOIN
+            prof_lab pl ON p.NumEmp = pl.Num_Emp
+        JOIN
+            laboratorios l ON pl.IdLaboratorio = l.IdLaboratorios
+        JOIN
+            profesores_materias pm ON p.NumEmp = pm.NumEmp
+        JOIN
+            materias m ON pm.ClaveMateria = m.Clave
+        WHERE
+            p.NumEmp = :numEmp");
+        
+        $consulta->bindParam(':numEmp', $numEmp, PDO::PARAM_INT);
+        $consulta->execute();
+
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error de base de datos: " . $e->getMessage(), 0);
+        return false;
+    } finally {
+        $conexion = null;
+    }
+}
+
+function obtenerDetallesMateria($numEmpProfesor, $nombreMateria) {
+    $conexion = conectarDB();
+
+    try {
+        $consulta = $conexion->prepare("SELECT
+            m.Clave AS ClaveMateria,
+            m.Nombre AS NombreMateria,
+            a.Matricula AS MatriculaAlumno,
+            a.Nombre AS NombreAlumno,
+            a.Apellido AS ApellidoAlumno,
+            c.Calificacion,
+            c.Ciclo_Escolar
+        FROM
+            profesores p
+        JOIN
+            profesores_materias pm ON p.NumEmp = pm.NumEmp
+        JOIN
+            materias m ON pm.ClaveMateria = m.Clave
+        JOIN
+            cursar c ON m.Clave = c.Clave_Materia
+        JOIN
+            alumnos a ON c.Matricula_Alumno = a.Matricula
+        WHERE
+            p.NumEmp = :numEmpProfesor
+        AND
+            m.Nombre = :nombreMateria");
+
+        $consulta->bindParam(':numEmpProfesor', $numEmpProfesor, PDO::PARAM_INT);
+        $consulta->bindParam(':nombreMateria', $nombreMateria, PDO::PARAM_STR);
+        $consulta->execute();
+
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error de base de datos: " . $e->getMessage(), 0);
+        return false;
+    } finally {
+        $conexion = null;
+    }
+}

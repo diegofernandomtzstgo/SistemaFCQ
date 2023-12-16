@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     
-<!--||||||||||||||||||||BANNER|||||||||||||||||||-->
+
     <div class="conatiner">
        <div class="banner">
             <div class="banner-text">
@@ -67,15 +67,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p style="color: red;"><?php echo $mensaje_error; ?></p>
     <?php endif; ?>
 
-    <!--|||||||||||||||FORMULARIO PROFESORES|||||||||||-->
+ 
     
     <div class="containers">
-    <div class="login-containers"><!---->
+    <div class="login-containers">
         <div class="register">
             <h2>iniciar sesion</h2>
             <form action="LoginProfesores.php" method="post">
                 <label for="NumEmp"></label>
-                <input type="text" id="NumEmp" placeholder="Nombre de usuario" name="NumEmp" class="nombre" required>
+                <input type="text" id="NumEmp" placeholder="Usuario" name="NumEmp" class="nombre" required>
                 <br>
                 <label for="Password"></label>
                 <input type="password" id="Password" placeholder="Contraseña" name="Password" class="pass" required>
