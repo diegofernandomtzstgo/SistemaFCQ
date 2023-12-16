@@ -93,43 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }       
 
-        // Establecer la conexión a la base de datos
-    $conexion = conectarDB();
-
-    if ($conexion) {
-        try {
-            // Consulta de inserción
-            $sql = "INSERT INTO alumnos (Matricula, Nombre, Apellido, Sexo, Telefono, Correo, Semestre, Grupo)
-                    VALUES (:matricula, :nombre, :apellido, :sexo, :telefono, :correo, :semestre, :grupo)";
-
-            $consulta = $conexion->prepare($sql);
-            $consulta->bindParam(':matricula', $matricula, PDO::PARAM_INT);
-            $consulta->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-            $consulta->bindParam(':apellido', $apellidos, PDO::PARAM_STR);
-            $consulta->bindParam(':sexo', $sexo, PDO::PARAM_STR);
-            $consulta->bindParam(':telefono', $telefono, PDO::PARAM_STR);
-            $consulta->bindParam(':correo', $correo, PDO::PARAM_STR);
-            $consulta->bindParam(':semestre', $semestre, PDO::PARAM_INT);
-            $consulta->bindParam(':grupo', $grupo, PDO::PARAM_STR);
-
-            $consulta->execute();
-
-            $filas = $consulta->rowCount();
-
-            if ($filas > 0) {
-                echo "Alumno Agregado";
-            } else {
-                echo "Hubo un Error al Agregar Alumno!!!";
-            }
-        } catch (PDOException $e) {
-            echo "Error de base de datos: " . $e->getMessage();
-        } finally {
-            // Cerrar la conexión
-            $conexion = null;
-        }
-    } else {
-        echo "Error al conectar a la base de datos";
-    }
+        $mensaje = insertarAlumno($matricula, $nombre, $apellidos, $sexo, $telefono, $correo, $semestre, $grupo);
+        echo $mensaje;
    
 }
 

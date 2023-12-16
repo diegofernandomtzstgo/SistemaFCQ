@@ -20,7 +20,6 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
 
 // Actualizar la marca de tiempo de la última actividad
 $_SESSION['last_activity'] = time();
-
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +57,10 @@ $_SESSION['last_activity'] = time();
             <div class="parte2"><a href="AgregarAlumnos.php"><img src="iconos/ingresaralumno.png" width="110"></a></div>
         </div>
         <div class="parte">Editar alumno<br><br>
-            <div class="parte2"><a href="#"><img src="iconos/editar_alumno.png" width="100"></a></div>
+            <div class="parte2"><a href="SeleccionarCarreraXSemestre.php"><img src="iconos/editar_alumno.png" width="100"></a></div>
         </div>
         <div class="parte">Calificaciones de Alumnos<br><br>
-            <div class="parte2"><a href="#"><img src="iconos/calificacionesalumno.png" width="135"></a></div>
+            <div class="parte2"><a href="ElegirKardex.php"><img src="iconos/calificacionesalumno.png" width="135"></a></div>
         </div>
         <div class="parte">Laboratorios<br><br>
         <div class="parte2"><a href="#"><img src="iconos/laboratorios.png" width="100"></a></div>
