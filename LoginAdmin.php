@@ -1,33 +1,32 @@
 <?php
 include('funciones.php');
-session_start(); // Inicia la sesión al principio del script
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $numEmp = isset($_POST['NumEmp']) ? filter_var($_POST['NumEmp'], FILTER_SANITIZE_STRING) : '';
+    $usuario = isset($_POST['Usuario']) ? filter_var($_POST['Usuario'], FILTER_SANITIZE_STRING) : '';
     $password = isset($_POST['Password']) ? filter_var($_POST['Password'], FILTER_SANITIZE_STRING) : '';
 
-    if (empty($numEmp) || empty($password)) {
+    if (empty($usuario) || empty($password)) {
         $mensaje_error = "Por favor, completa todos los campos.";
     } else {
-        $usuario_valido = consultarLoginProfesores($numEmp,$password);
+        $admin_valido = consultarLoginAdmin($usuario, $password);
 
-        if ($usuario_valido && $password === $usuario_valido['Password']) {
-            // session_start(); // No es necesario volver a iniciar la sesión aquí
+        if ($admin_valido) {
+            session_start();
             session_regenerate_id();
             $_SESSION = array();
 
-            $_SESSION['user_id'] = $usuario_valido['NumEmp'];
-            $_SESSION['user_name'] = $usuario_valido['Nombre'];
+            
+            $_SESSION['admin_usuario'] = $admin_valido['Usuario'];
 
-            header("Location: IndexProfesores.php");
+            header("Location: IndexAdmin.php");
             exit();
         } else {
-            $mensaje_error = "Credenciales incorrectas";
+            $mensaje_error = "Usuario o contraseña incorrectos";
         }
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -36,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_login.css">
-    <title>Login de Profesores</title>
+    <title>Login de Administrador</title>
 </head>
 <body>
-    
-<!--||||||||||||||||||||BANNER|||||||||||||||||||-->
+
+    <!--||||||||||||||||||||BANNER|||||||||||||||||||-->
     <div class="conatiner">
        <div class="banner">
             <div class="banner-text">
@@ -67,15 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p style="color: red;"><?php echo $mensaje_error; ?></p>
     <?php endif; ?>
 
-    <!--|||||||||||||||FORMULARIO PROFESORES|||||||||||-->
-    
+
+ <!--|||||||||||||||FORMULARIO ADMIN|||||||||||-->
     <div class="containers">
     <div class="login-containers"><!---->
         <div class="register">
             <h2>iniciar sesion</h2>
-            <form action="LoginProfesores.php" method="post">
-                <label for="NumEmp"></label>
-                <input type="text" id="NumEmp" placeholder="Nombre de usuario" name="NumEmp" class="nombre" required>
+            <form action="LoginAdmin.php" method="post">
+                <label for="Usuario"></label>
+                <input type="text" id="Usuario" placeholder="Nombre de usuario" name="Usuario" class="nombre" required>
                 <br>
                 <label for="Password"></label>
                 <input type="password" id="Password" placeholder="Contraseña" name="Password" class="pass" required>
