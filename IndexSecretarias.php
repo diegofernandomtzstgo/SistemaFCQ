@@ -50,7 +50,7 @@ $_SESSION['last_activity'] = time();
             <div class="parte2"><a href="ElegirKardex.php"><img src="iconos/calificacionesalumno.png" width="135"></a></div>
         </div>
         <div class="parte">Laboratorios<br><br>
-        <div class="parte2"><a href="#"><img src="iconos/laboratorios.png" width="100"></a></div>
+        <div class="parte2"><a href="ListaLaboratorios.php"><img src="iconos/laboratorios.png" width="100"></a></div>
         </div>
         <div class="parte">Profesores<br><br>
         <div class="parte2"><a href="#"><img src="iconos/profesor.png" width="100"></a></div>

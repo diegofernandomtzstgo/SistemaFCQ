@@ -61,6 +61,7 @@ $_SESSION['last_activity'] = time();
     <label for="semestre">Semestre:</label><br>
     <input type="number" id="semestre1" name="semestre1" min="1" max="12" value="<?php echo $registros['Semestre'];?>" placeholder="Ingrese nuevo semestre" required><br>
     <input type="submit" value="Editar">
+    <p>Campos vacíos implican que la base de datos se actualizará con datos vacíos. Precaución</p>
 </form>
 
 </body>

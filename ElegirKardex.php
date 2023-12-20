@@ -31,7 +31,7 @@ $_SESSION['last_activity'] = time();
 <body>
 <div>
     <a href="BuscarAlumno.php"><button>Kardex</button></a>
-    <a href="materia.php"><button>Materias</button></a>
+    <a href="BuscarMaterias.php"><button>Materias</button></a>
 </div>
 
 </body>
